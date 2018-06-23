@@ -18,3 +18,14 @@ The other tools within:
 * Customized logging built-in care of [winston](https://www.npmjs.com/package/winston)
 * Ability to declaratively enforce external requirements/versions, e.g. if your CLI requires a particular binary and version. Also looks at package.json engines version definitions to enforce. Version checking based on [semver](https://www.npmjs.com/package/semver)
 * [inquirer](https://www.npmjs.com/package/inquirer) for prompts and user input
+
+## Getting Started
+
+In your existing node project
+
+```
+npm install --save rockcli
+./node_modules/.bin/rockcli init
+```
+
+This will create the necessary resources in your project
