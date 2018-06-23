@@ -29,3 +29,5 @@ npm install --save rockcli
 ```
 
 This will create the necessary resources in your project
+
+Then `./cli help` or `./[your chosen cli entrypoint name] help` for more info. Start adding commands to the `commands` directory. Reference the pre-populated commands there for more info on how to build your commands. It's based off of [yargs](https://www.npmjs.com/package/yargs) command file modules.
