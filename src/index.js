@@ -2,22 +2,11 @@ import { Logger } from './logger'
 import { Config } from './config'
 import { Requirements } from './requirements'
 
-class RockCli {
-
-  constructor () {
-    this.config       = new Config()
-    this.logger       = (new Logger(this.config.active.logger)).logger
-    this.requirements = new Requirements()
-  }
+class Clia {
 
 }
 
-const rockCli       = new RockCli()
-const logger        = rockCli.logger
-const config        = rockCli.config
-const requirements  = rockCli.requirements
-export {
-  logger,
-  config,
-  requirements,
-}
+export const clia         = new Clia()
+export const config       = new Config()
+export const logger       = (new Logger(config.active.logger)).logger
+export const requirements = new Requirements()

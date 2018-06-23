@@ -1,17 +1,17 @@
 {
-  "name": "rockcli",
+  "name": "clia",
   "version": "1.0.0",
-  "description": "Quickly bootstrap a node CLI project or add a CLI tool to an existing project",
+  "description": "Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rockholla/node-rockcli.git"
+    "url": "git+https://github.com/rockholla/node-clia.git"
   },
   "author": "Patrick Force <patrickforce@gmail.com>",
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/rockholla/node-rockcli/issues"
+    "url": "https://github.com/rockholla/node-clia/issues"
   },
-  "homepage": "https://github.com/rockholla/node-rockcli#readme",
+  "homepage": "https://github.com/rockholla/node-clia#readme",
   "main": "lib/index.js",
   "engines": {
     "node": ">=8"
@@ -19,14 +19,14 @@
   "scripts": {
     "prebuild": "npm run lint",
     "postbuild": "npm run test",
-    "build": "babel src --out-dir lib",
-    "build-untested": "babel src --out-dir lib",
+    "build": "npm run build-only",
+    "build-only": "babel src --out-dir lib",
     "test": "NODE_ENV=development jest -c jest.config.js",
-    "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/rockcli init",
-    "lint": "eslint ."
+    "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/clia init",
+    "lint": "eslint src/ tests/"
   },
   "bin": {
-    "rockcli": "./bin/rockcli.js"
+    "clia": "./bin/clia.js"
   },
   "dependencies": {
     "config": "^1.30.0",

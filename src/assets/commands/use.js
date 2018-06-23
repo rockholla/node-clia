@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import inquirer from 'inquirer'
-import { logger } from 'rockcli'
+import { logger } from 'clia'
 
 class CommandDefinition {
 

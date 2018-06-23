@@ -8,7 +8,7 @@ if (!process.env.NODE_PATH) {
 }
 import module from 'module'
 module.Module._initPaths()
-import { logger, config, requirements } from 'rockcli'
+import { logger, config, requirements } from 'clia'
 
 const yargs = require('yargs')
 yargs
@@ -31,7 +31,7 @@ yargs
     logger.info('Making sure system requirements are met...')
     try {
       let packageJson = require('./package.json')
-      requirements.check(packageJson.rockcli.requirements, packageJson.engines)
+      requirements.check(packageJson.clia.requirements, packageJson.engines)
     } catch (error) {
       logger.error(`Requirements check failed:\n${error}`)
       process.exit(1)

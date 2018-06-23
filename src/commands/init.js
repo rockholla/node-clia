@@ -6,11 +6,11 @@ import inquirer from 'inquirer'
 class CommandDefinition {
 
   constructor () {
-    this.cliName  = 'cli'
+    this.cliName  = 'clia'
     this.logPad   = '==> '
     this.dir      = null
     this.command  = 'init [--dir=<target directory>] [--cli-name=<entrypoint file name>]'
-    this.desc     = 'Initializes a node project with rockcli resources'
+    this.desc     = 'Initializes a node project with clia resources'
     this.creates  = null
   }
 
@@ -18,7 +18,7 @@ class CommandDefinition {
     this.dir = argv.dir ? path.resolve(argv.dir) : process.cwd()
     this.precheck()
     this.projectPackage = require(path.resolve(this.dir, 'package.json'))
-    logger.info(`Initializing project in ${this.dir} for rockcli`)
+    logger.info(`Initializing project in ${this.dir} for clia`)
     return this.getCliName(argv).then((response) => {
       this.cliName = response.cliName
       return this.config()
@@ -74,7 +74,7 @@ class CommandDefinition {
       return inquirer.prompt({
         type: 'confirm',
         name: 'overwrite',
-        message: 'Do you want to overwrite it with the rockcli default?',
+        message: 'Do you want to overwrite it with the clia default?',
       }).then((response) => {
         if (response.overwrite) {
           writeDefaultConfig()
@@ -89,30 +89,30 @@ class CommandDefinition {
   }
 
   packageJson () {
-    logger.info(`${this.logPad}Adding the rockcli property and related meta to your package.json`)
+    logger.info(`${this.logPad}Adding the clia property and related meta to your package.json`)
     let json = require(path.resolve(this.dir, 'package.json'))
-    const addRockCliProperty = () => {
-      json.rockcli = {
-        help: 'For more info on setting values here, see https://github.com/rockholla/node-rockcli',
+    const addCliaProperty = () => {
+      json.clia = {
+        help: 'For more info on setting values here, see https://github.com/rockholla/node-clia#readme',
         requirements: {},
       }
       fs.writeFileSync(path.resolve(this.dir, 'package.json'), JSON.stringify(json, null, 2))
     }
-    if (json.rockcli !== undefined) {
-      logger.warn('The rockcli property already exists in your package.json')
+    if (json.clia !== undefined) {
+      logger.warn('The clia property already exists in your package.json')
       return inquirer.prompt({
         type: 'confirm',
         name: 'overwrite',
-        message: 'Do you want to overwrite the property with rockcli defaults?',
+        message: 'Do you want to overwrite the property with clia defaults?',
       }).then((response) => {
         if (response.overwrite) {
-          addRockCliProperty()
+          addCliaProperty()
         } else {
-          logger.warn(`${this.logPad}OK, not overwriting rockcli property in package.json`)
+          logger.warn(`${this.logPad}OK, not overwriting clia property in package.json`)
         }
       })
     } else {
-      addRockCliProperty()
+      addCliaProperty()
       return Promise.resolve()
     }
 
@@ -122,7 +122,7 @@ class CommandDefinition {
     logger.info(`${this.logPad}Copying cli entrypoint command to the root of your project`)
     let cliName = this.cliName
     const writeCliFile = () => {
-      fs.writeFileSync(path.resolve(this.dir, cliName), fs.readFileSync(path.resolve(__dirname, '..', 'assets', 'cli.js')))
+      fs.writeFileSync(path.resolve(this.dir, cliName), fs.readFileSync(path.resolve(__dirname, '..', 'assets', 'clia.js')))
       fs.chmodSync(path.resolve(this.dir, cliName), '0755')
     }
     if (fs.existsSync(path.resolve(this.dir, cliName))) {
@@ -130,12 +130,12 @@ class CommandDefinition {
       return inquirer.prompt({
         type: 'confirm',
         name: 'overwrite',
-        message: 'Do you want to overwrite it with the rockcli default one?',
+        message: 'Do you want to overwrite it with the clia default one?',
       }).then((response) => {
         if (response.overwrite) {
           writeCliFile()
         } else {
-          logger.warn(`${this.logPad}OK, not overwriting rockcli root entrypoint`)
+          logger.warn(`${this.logPad}OK, not overwriting clia root entrypoint`)
         }
       })
     } else {
@@ -162,7 +162,7 @@ class CommandDefinition {
       return inquirer.prompt({
         type: 'confirm',
         name: 'overwrite',
-        message: 'Do you want to overwrite it with the rockcli default one?',
+        message: 'Do you want to overwrite it with the clia default one?',
       }).then((response) => {
         if (response.overwrite) {
           writeCommand()

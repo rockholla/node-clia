@@ -8,11 +8,12 @@ describe('functional/init', function () {
 
   const projectTemplate = path.resolve(__dirname, '..', '.project-template')
   const project         = path.resolve(__dirname, '..', '.project')
+  const cliName         = 'testCli'
 
   beforeAll(function () {
     return rcp(projectTemplate, project).then(function () {
       shell.exec('npm install --production', { cwd: project })
-      shell.exec('./node_modules/.bin/rockcli init --cli-name=testCli', { cwd: project })
+      shell.exec(`./node_modules/.bin/clia init --cli-name=${cliName}`, { cwd: project })
     })
   })
 
@@ -25,21 +26,21 @@ describe('functional/init', function () {
     })
   })
 
-  it('rockcli init should create config resources', function () {
+  it('clia init should create config resources', function () {
     expect(fs.existsSync(path.resolve(project, 'config'))).toEqual(true)
     expect(fs.existsSync(path.resolve(project, 'config', 'default.js'))).toEqual(true)
     expect(fs.readFileSync(path.resolve(project, 'config', 'default.js')).toString('utf8')).toEqual('module.exports = {};')
   })
 
-  it('rockcli init should modify package.json', function () {
+  it('clia init should modify package.json', function () {
     let packageJson = require(path.resolve(project, 'package.json'))
-    expect(packageJson).toHaveProperty('rockcli.requirements')
-    expect(packageJson).toHaveProperty('rockcli.help')
-    expect(typeof packageJson.rockcli.help).toBe('string')
+    expect(packageJson).toHaveProperty('clia.requirements')
+    expect(packageJson).toHaveProperty('clia.help')
+    expect(typeof packageJson.clia.help).toBe('string')
   })
 
-  it('rockcli init should create commands directory and named cli entrypoint', function () {
-    expect(fs.existsSync(path.resolve(project, 'testCli'))).toEqual(true)
+  it('clia init should create commands directory and named cli entrypoint', function () {
+    expect(fs.existsSync(path.resolve(project, cliName))).toEqual(true)
     expect(fs.existsSync(path.resolve(project, 'commands'))).toEqual(true)
   })
 

@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import inquirer from 'inquirer'
-import { logger } from 'rockcli'
+import { logger } from 'clia'
 
 class CommandDefinition {
 
@@ -45,7 +45,7 @@ class CommandDefinition {
       message: 'Finally, any helpful info, links, etc. you would like to provide a user who doesn\'t have the executable installed? (optional)',
     }]).then((responses) => {
       let packageJson = require(path.resolve(__dirname, '..', 'package.json'))
-      packageJson.rockcli.requirements[responses.executable] = {
+      packageJson.clia.requirements[responses.executable] = {
         type: responses.type,
         version: responses.version,
         versionCommand: responses.versionCommand,

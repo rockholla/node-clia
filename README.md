@@ -1,15 +1,15 @@
-# rockcli
+# clia
 
-Quickly bootstrap a node CLI project or add a CLI tool to an existing project
+[description]
 
-[![Build Status](https://travis-ci.org/rockholla/node-rockcli.svg?branch=master)](https://travis-ci.org/rockholla/node-rockcli)
+[![Build Status](https://travis-ci.org/rockholla/node-clia.svg?branch=master)](https://travis-ci.org/rockholla/node-clia)
 
 ## Features and Included Tools
 
-`rockcli` is capable of working with both new or existing projects. It allows you to add a CLI tool to the project for running specific encapsulated commands. A few example use cases:
+`clia` is capable of working with both new or existing projects. It allows you to add a CLI tool to the project for running specific encapsulated commands. A few example use cases:
 
 1. You want to develop a CLI tool for deploying and managing custom infrastructure. You could quickly get up-and-running and start adding your custom commands and operations in minutes.
-2. You'd like to include a CLI tool in an existing web app project to help automate parts of the project. Say, build the Docker image for your app and push it to an image repo. `rockcli` adds potential for encapsulating complex tasks specific to your project to be run by your CI/CD server via a simple command. Kinda like npm scripts, but with more power and flexibility.
+2. You'd like to include a CLI tool in an existing web app project to help automate parts of the project. Say, build the Docker image for your app and push it to an image repo. `clia` adds potential for encapsulating complex tasks specific to your project to be run by your CI/CD server via a simple command. Kinda like npm scripts, but with more power and flexibility.
 
 The other tools within:
 
@@ -24,8 +24,8 @@ The other tools within:
 In your existing node project
 
 ```
-npm install --save rockcli
-./node_modules/.bin/rockcli init
+npm install --save clia
+./node_modules/.bin/clia init
 ```
 
 This will create the necessary resources in your project
