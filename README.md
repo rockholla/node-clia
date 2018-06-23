@@ -1,6 +1,6 @@
 # rockcli
 
-Quickly bootstrap a node CLI project, or add more complex CLI support to an existing project
+Quickly bootstrap a node CLI project or add a CLI tool to an existing project
 
 [![Build Status](https://travis-ci.org/rockholla/node-rockcli.svg?branch=master)](https://travis-ci.org/rockholla/node-rockcli)
 

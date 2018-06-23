@@ -1,6 +1,6 @@
 {
   "name": "rockcli",
-  "description": "Quickly bootstrap a node-based CLI project",
+  "description": "Quickly bootstrap a node CLI project or add a CLI tool to an existing project",
   "version": "1.0.0",
   "private": false,
   "license": "AGPL-3.0-or-later",
