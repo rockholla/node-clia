@@ -16,7 +16,7 @@ The other tools within:
 * [yargs](https://www.npmjs.com/package/yargs) for commands and argument parsing
 * Easy config setup and management care of [npm config](https://www.npmjs.com/package/config), with extra features such as switching b/w different configurations quickly and easily
 * Customized logging built-in care of [winston](https://www.npmjs.com/package/winston)
-* Ability to declaratively enforce external requirements/versions, e.g. if your CLI requires a particular binary and version. Also looks at package.json engines version definitions to enforce. Version checking based on [semver](https://www.npmjs.com/package/semver)
+* Ability to declaratively enforce external requirements/versions, e.g. if your CLI requires a particular executable and version. Also looks at package.json engines version definitions to enforce. Version checking based on [semver](https://www.npmjs.com/package/semver)
 * [inquirer](https://www.npmjs.com/package/inquirer) for prompts and user input
 
 ## Getting Started
