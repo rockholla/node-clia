@@ -1,6 +1,6 @@
 # clia
 
-[description]
+Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project
 
 [![Build Status](https://travis-ci.org/rockholla/node-clia.svg?branch=master)](https://travis-ci.org/rockholla/node-clia)
 
