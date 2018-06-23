@@ -2,6 +2,8 @@
 
 Quickly bootstrap a node CLI project, or add more complex CLI support to an existing project
 
+[![Build Status](https://travis-ci.org/rockholla/node-rockcli.svg?branch=master)](https://travis-ci.org/rockholla/node-rockcli)
+
 ## Features and Included Tools
 
 `rockcli` is capable of working with both new or existing projects. It allows you to add a CLI tool to the project for running specific encapsulated commands. A few example use cases:
