@@ -44,4 +44,9 @@ describe('functional/init', function () {
     expect(fs.existsSync(path.resolve(project, 'commands'))).toEqual(true)
   })
 
+  it('clia should create use, add-requirement commands', function () {
+    expect(fs.existsSync(path.resolve(project, 'commands', 'use.js'))).toEqual(true)
+    expect(fs.existsSync(path.resolve(project, 'commands', 'add-requirement.js'))).toEqual(true)
+  })
+
 })

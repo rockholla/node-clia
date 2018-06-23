@@ -25,7 +25,7 @@ class CommandDefinition {
     }).then(() => {
       return this.packageJson()
     }).then(() => {
-      return this.rootCliFile()
+      return this.entrypointCliFile()
     }).then(() => {
       return this.commandsDir()
     }).then(() => {
@@ -118,7 +118,7 @@ class CommandDefinition {
 
   }
 
-  rootCliFile () {
+  entrypointCliFile () {
     logger.info(`${this.logPad}Copying cli entrypoint command to the root of your project`)
     let cliName = this.cliName
     const writeCliFile = () => {
