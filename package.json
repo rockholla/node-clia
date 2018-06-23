@@ -1,11 +1,17 @@
 {
   "name": "rockcli",
-  "description": "Quickly bootstrap a node CLI project or add a CLI tool to an existing project",
   "version": "1.0.0",
-  "private": false,
-  "license": "AGPL-3.0-or-later",
+  "description": "Quickly bootstrap a node CLI project or add a CLI tool to an existing project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rockholla/node-rockcli.git"
+  },
   "author": "Patrick Force <patrickforce@gmail.com>",
-  "repository": "https://github.com/rockholla/node-rockcli",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rockholla/node-rockcli/issues"
+  },
+  "homepage": "https://github.com/rockholla/node-rockcli#readme",
   "main": "lib/index.js",
   "engines": {
     "node": ">=8"
@@ -36,7 +42,6 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
     "eslint": "^4.19.1",
     "jest": "^23.1.0",
     "recursive-copy": "^2.0.9",
