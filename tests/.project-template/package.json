@@ -1,0 +1,11 @@
+{
+  "name": "rockcli-tests",
+  "version": "1.0.0",
+  "description": "rockcli tests",
+  "author": "rockcli tests",
+  "repository": "https://github.com/rockholla/node-rockcli",
+  "license": "ISC",
+  "dependencies": {
+    "rockcli": "file:../.."
+  }
+}

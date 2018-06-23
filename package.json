@@ -1,0 +1,46 @@
+{
+  "name": "rockcli",
+  "description": "Quickly bootstrap a node-based CLI project",
+  "version": "1.0.0",
+  "private": false,
+  "license": "AGPL-3.0-or-later",
+  "author": "Patrick Force <patrickforce@gmail.com>",
+  "repository": "https://github.com/rockholla/node-rockcli",
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "prebuild": "npm run lint",
+    "postbuild": "npm run test",
+    "build": "babel src --out-dir lib",
+    "build-untested": "babel src --out-dir lib",
+    "test": "NODE_ENV=development jest -c jest.config.js",
+    "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/rockcli init",
+    "lint": "eslint ."
+  },
+  "bin": {
+    "rockcli": "./bin/rockcli.js"
+  },
+  "dependencies": {
+    "config": "^1.30.0",
+    "dotenv": "^6.0.0",
+    "inquirer": "^6.0.0",
+    "semver": "^5.5.0",
+    "shelljs": "^0.8.2",
+    "winston": "^3.0.0",
+    "yargs": "^11.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.19.1",
+    "jest": "^23.1.0",
+    "recursive-copy": "^2.0.9",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.12.0"
+  }
+}
