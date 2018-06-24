@@ -6,7 +6,8 @@ class Clia {
 
 }
 
-export const clia         = new Clia()
+const clia = new Clia()
+export default clia
 export const config       = new Config()
 export const logger       = (new Logger(config.active.logger)).logger
 export const requirements = new Requirements()

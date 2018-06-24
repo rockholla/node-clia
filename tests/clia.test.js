@@ -1,15 +1,19 @@
-const clia = require('../lib')
+import clia, { config, logger } from '../lib'
 
-describe('clia', function () {
+describe('clia', () => {
 
-  it('ensure we have an active config by default, and it includes some of the default config', function () {
-    expect(clia.config).toHaveProperty('active')
-    expect(clia.config.active).toHaveProperty('logger')
-    expect(clia.config.active.logger.level).toEqual('info')
+  it('ensure imported clia is of type Clia', () => {
+    expect(typeof clia).toBe('object')
   })
 
-  it('ensure the logger is set to a winston logger', function () {
-    expect(clia.logger).toHaveProperty('info')
+  it('ensure we have an active config by default, and it includes some of the default config', () => {
+    expect(config).toHaveProperty('active')
+    expect(config.active).toHaveProperty('logger')
+    expect(config.active.logger.level).toEqual('info')
+  })
+
+  it('ensure the logger is set to a winston logger', () => {
+    expect(logger).toHaveProperty('info')
   })
 
 })
