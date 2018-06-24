@@ -62,11 +62,7 @@ describe('functional/init', () => {
 
   it('./clia use should prompt to create a new config if it does not exist, and a new config is created when selecting Y', (done) => {
     let p = process.spawn(`./${cliName}`, ['use', 'doesntexist'], { cwd: path.resolve(__dirname, '..', '.project') })
-    p.stdout.on('data', (data) => {
-      if (data.indexOf('(Y/n)') >= 0) {
-        p.stdin.write('Y\n')
-      }
-    })
+    p.stdin.write('Y\n')
     p.on('close', () => {
       expect(fs.existsSync(path.resolve(__dirname, '..', '.project', 'config', 'doesntexist.js'))).toEqual(true)
       expect(fs.readlinkSync(path.resolve(__dirname, '..', '.project', 'config', 'local.js'))).toMatch(/.*doesntexist.*/)
@@ -78,11 +74,7 @@ describe('functional/init', () => {
 
   it('./clia use should prompt to create a new config if it does not exist, and not create it if N is selected', (done) => {
     let p = process.spawn(`./${cliName}`, ['use', 'doesntexist'], { cwd: path.resolve(__dirname, '..', '.project') })
-    p.stdout.on('data', (data) => {
-      if (data.indexOf('(Y/n)') >= 0) {
-        p.stdin.write('N\n')
-      }
-    })
+    p.stdin.write('N\n')
     p.on('close', () => {
       expect(fs.existsSync(path.resolve(__dirname, '..', '.project', 'config', 'doesntexist.js'))).toEqual(false)
       done()
@@ -94,20 +86,20 @@ describe('functional/init', () => {
     expect(result.stdout).toMatch(/.*Now using the default config.*/)
   })
 
-  it('./clia add-requirement should kick off the add requirement process', (done) => {
-    let p = process.spawn(`./${cliName}`, ['add-requirement'], { cwd: path.resolve(__dirname, '..', '.project') })
-    let passed = false
-    p.stdout.on('data', (data) => {
-      if (data.indexOf('requirement?') >= 0) {
-        passed = true
-        p.kill()
-      }
-    })
-    p.on('close', () => {
-      expect(passed).toEqual(true)
-      done()
-    })
-  })
+  // it('./clia add-requirement should kick off the add requirement process', (done) => {
+  //   let p = process.spawn(`./${cliName}`, ['add-requirement'], { cwd: path.resolve(__dirname, '..', '.project') })
+  //   let passed = false
+  //   p.stdout.on('data', (data) => {
+  //     if (data.indexOf('requirement?') >= 0) {
+  //       passed = true
+  //       p.kill()
+  //     }
+  //   })
+  //   p.on('close', () => {
+  //     expect(passed).toEqual(true)
+  //     done()
+  //   })
+  // })
 
   // TODO: test all add-requirement cases
 
