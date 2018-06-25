@@ -75,6 +75,6 @@ To add requirements, you can either use the built-in command, `./clia add-requir
         * `required`: the [semantic version](https://www.npmjs.com/package/semver) required
         * `command`: the command to execute to get the installed version (default = `[name] --version`)
         * `replace`: the command to get the version often won't return just the version number, so use this field to add a regular expression for characters to replace from the version command output (default = `[a-zA-Z\s]+`)
-        * `help`: some helpful text to display when the required version isn't installed if you like
+    * `help`: some helpful text to display when the required version isn't installed if you like
 
 Last, requirements checking also enforces any package.json engines defintions by default, so you can also enforce which node version(s) can and can't run your CLI commands. If you wish to turn off requirements checking entirely, simply update `clia.requirements.enabled` to be `false` in your package.json.
