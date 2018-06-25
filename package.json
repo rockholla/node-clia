@@ -28,7 +28,8 @@
     "build-only": "babel src --out-dir lib",
     "test": "NODE_ENV=development jest -c jest.config.js",
     "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/clia init",
-    "lint": "eslint src/ tests/"
+    "lint": "eslint src/ tests/",
+    "release": "npm publish --access public"
   },
   "bin": {
     "clia": "./bin/clia.js"
