@@ -2,7 +2,7 @@
 
 Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project
 
-[![Build Status](https://travis-ci.org/rockholla/node-clia.svg?branch=master)](https://travis-ci.org/rockholla/node-clia)
+[![Build Status](https://travis-ci.org/rockholla/nodejs-clia.svg?branch=master)](https://travis-ci.org/rockholla/nodejs-clia)
 
 ## Features and Included Tools
 
@@ -24,10 +24,57 @@ The other tools within:
 In your existing node project
 
 ```
-npm install --save clia
+npm install --save @rockholla/clia
 ./node_modules/.bin/clia init
 ```
 
 This will create the necessary resources in your project
 
-Then `./clia help` or `./[your chosen cli entrypoint name] help` for more info. Start adding commands to the `commands` directory. Reference the pre-populated commands there for more info on how to build your commands. It's based off of [yargs](https://www.npmjs.com/package/yargs) command file modules.
+Then `./clia help` or `./[your chosen cli entrypoint name] help` for more info. Start adding commands to the `commands` directory. Reference the clia-installed commands in that directory after running init for building your own. It's based off of [yargs](https://www.npmjs.com/package/yargs) command file modules.
+
+## Working with included utilities
+
+You can easily make use of the included `clia` tools while building your commands or other parts relevant to your CLI. For example, if you wanted to access both the built-in config and logger, you could do something like:
+
+```
+import { config, logger } from '@rockholla/clia'
+
+logger.info(`Current log level configured as ${config.logger.level}`)
+```
+
+## Adding enforced requirements to your project
+
+`clia` gives you the ability to strictly enforce certain requirements prior to running any command, say if your CLI makes use of the `grep` executable, then you can ensure that anyone running the tool actually has it installed.
+
+To add requirements, you can either use the built-in command, `./clia add-requirement`, or add one manually to the `clia.requirements` property in your package.json. It should be in the form:
+
+```
+"clia": {
+  "help": "...",
+  "requirements": {
+    "enabled": true,
+    "executables": [{
+      "name": "grep",
+      "version": {
+        "required": "~2",
+        "command": "grep --version",
+        "replace": "[a-zA-Z\\s\\(\\)\\-]+"
+      },
+      "help": "See more about grep at https://www.gnu.org/software/grep/"
+    }]
+  }
+}
+```
+
+### package.json `clia.requirements`
+
+* `enabled`: enable or disable requirements checks before running all commands
+* `executables`: so far only executable requirements are supported, others may be added later
+    * `name`: the name of the required executable, e.g. `grep`, `cat`, etc
+    * `version`:
+        * `required`: the [semantic version](https://www.npmjs.com/package/semver) required
+        * `command`: the command to execute to get the installed version (default = `[name] --version`)
+        * `replace`: the command to get the version often won't return just the version number, so use this field to add a regular expression for characters to replace from the version command output (default = `[a-zA-Z\s]+`)
+        * `help`: some helpful text to display when the required version isn't installed if you like
+
+Last, requirements checking also enforces any package.json engines defintions by default, so you can also enforce which node version(s) can and can't run your CLI commands. If you wish to turn off requirements checking entirely, simply update `clia.requirements.enabled` to be `false` in your package.json.

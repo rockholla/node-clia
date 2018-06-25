@@ -8,7 +8,7 @@ if (!process.env.NODE_PATH) {
 }
 import module from 'module'
 module.Module._initPaths()
-import { logger, config, requirements } from 'clia'
+import { logger, config, requirements } from '@rockholla/clia'
 
 const yargs = require('yargs')
 yargs

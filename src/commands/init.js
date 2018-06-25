@@ -93,8 +93,11 @@ class CommandDefinition {
     let json = require(path.resolve(this.dir, 'package.json'))
     const addCliaProperty = () => {
       json.clia = {
-        help: 'For more info on setting values here, see https://github.com/rockholla/node-clia#readme',
-        requirements: {},
+        help: 'For more info on setting values here, see https://github.com/rockholla/nodejs-clia#readme',
+        requirements: {
+          enabled: true,
+          executables: [],
+        },
       }
       fs.writeFileSync(path.resolve(this.dir, 'package.json'), JSON.stringify(json, null, 2))
     }

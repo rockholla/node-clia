@@ -4,27 +4,35 @@ import semver from 'semver'
 class Requirements {
 
   constructor() {
-    this.errors               = []
-    this.defaultReplaceRegex  = '[a-zA-Z\\s]+'
+    this.errors         = []
+    this.defaultReplace = '[a-zA-Z\\s]+'
   }
 
   check (requirements, engines) {
+    if (!requirements.enabled) {
+      return
+    }
     if (engines instanceof Object) {
       Object.keys(engines).forEach((engineName) => {
         try {
-          this.testSemver(engineName, this.getExecutableVersion(engineName), engines[engineName])
+          this.testSemver(
+            engineName,
+            this.getExecutableVersion(engineName),
+            engines[engineName])
         } catch (error) {
           this.errors.push(error)
         }
       })
     }
-    if (requirements instanceof Object) {
-      Object.keys(requirements).forEach((name) => {
-        let requirement = requirements[name]
+    if (requirements.executables instanceof Array) {
+      requirements.executables.forEach((requirement) => {
         try {
-          if (requirement.type === 'executable') {
-            this.testSemver(name, this.getExecutableVersion(name, requirement.versionCommand, requirement.versionCommandRegex), requirement.version)
-          }
+          this.testSemver(
+            requirement.name,
+            this.getExecutableVersion(requirement.name, requirement.version.command, requirement.version.replace),
+            requirement.version.required,
+            requirement.help
+          )
         } catch (error) {
           this.errors.push(error)
         }
@@ -35,19 +43,19 @@ class Requirements {
     }
   }
 
-  getExecutableVersion (name, command, replaceRegex) {
-    command       = command || `${name} --version`
-    replaceRegex  = replaceRegex || this.defaultReplaceRegex
+  getExecutableVersion (name, command, replace) {
+    command   = (command && command != '') ? command : `${name} --version`
+    replace   = (replace && replace != '') ? replace : this.defaultReplace
     try {
-      return shell.exec(command, { silent: true }).replace(new RegExp(replaceRegex, 'g'), '').trim()
+      return shell.exec(command, { silent: true }).replace(new RegExp(replace, 'g'), '').trim()
     } catch (error) {
       return error
     }
   }
 
-  testSemver (name, version, expected) {
+  testSemver (name, version, expected, help = '') {
     if (!semver.satisfies(version, expected)) {
-      throw `${name} should be version ${expected}, found ${version}`
+      throw `${name} should be version ${expected}, found ${version}\n${help}`
     }
   }
 }

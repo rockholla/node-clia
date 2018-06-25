@@ -1,17 +1,21 @@
 {
-  "name": "clia",
+  "name": "@rockholla/clia",
   "version": "0.1.0",
   "description": "Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project",
+  "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rockholla/node-clia.git"
+    "url": "git+https://github.com/rockholla/nodejs-clia.git"
   },
-  "author": "Patrick Force <patrickforce@gmail.com>",
+  "author": "Rockholla, LLC",
+  "contributors": [
+    "Patrick Force <patrickforce@gmail.com>"
+  ],
   "license": "AGPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/rockholla/node-clia/issues"
+    "url": "https://github.com/rockholla/nodejs-clia/issues"
   },
-  "homepage": "https://github.com/rockholla/node-clia#readme",
+  "homepage": "https://github.com/rockholla/nodejs-clia#readme",
   "main": "lib/index.js",
   "engines": {
     "node": ">=8",

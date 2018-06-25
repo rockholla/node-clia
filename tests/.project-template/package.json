@@ -1,11 +1,11 @@
 {
-  "name": "clia-tests",
-  "version": "1.0.0",
+  "name": "@rockholla/clia-tests",
+  "version": "0.1.0",
   "description": "clia tests",
   "author": "clia tests",
-  "repository": "https://github.com/rockholla/node-clia",
+  "repository": "https://github.com/rockholla/nodejs-clia",
   "license": "ISC",
   "dependencies": {
-    "clia": "file:../.."
+    "@rockholla/clia": "file:../.."
   }
 }
