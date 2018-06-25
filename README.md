@@ -1,4 +1,4 @@
-# clia
+# @rockholla/clia
 
 Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project
 
