@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/rockholla/nodejs-clia#readme",
   "main": "lib/index.js",
+  "bin": {
+    "clia": "bin/clia.js"
+  },
   "engines": {
     "node": ">=8",
     "npm": ">=6"
@@ -30,9 +33,6 @@
     "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/clia init",
     "lint": "eslint src/ tests/",
     "release": "npm publish --access public"
-  },
-  "bin": {
-    "clia": "./bin/clia.js"
   },
   "dependencies": {
     "config": "^1.30.0",

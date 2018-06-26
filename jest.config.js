@@ -1,7 +1,7 @@
 module.exports = {
   testMatch: [
-    '<rootDir>/(tests/**/*.test.js)'
+    '<rootDir>/tests/**/*.test.js'
   ],
-  globalSetup: './tests/setup.js',
-  globalTeardown: './tests/teardown.js',
+  globalSetup: '<rootDir>/tests/setup.js',
+  globalTeardown: '<rootDir>/tests/teardown.js',
 }
