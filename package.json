@@ -32,7 +32,7 @@
     "test": "NODE_ENV=development jest -c jest.config.js",
     "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/clia init",
     "lint": "eslint src/ tests/",
-    "release": "npm publish --access public"
+    "release": "git-npm-release"
   },
   "dependencies": {
     "config": "^1.30.0",
@@ -44,6 +44,7 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
+    "@rockholla/git-npm-release": "^0.6.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
