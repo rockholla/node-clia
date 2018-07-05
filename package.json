@@ -1,6 +1,6 @@
 {
   "name": "@rockholla/clia",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project",
   "private": false,
   "keywords": [
