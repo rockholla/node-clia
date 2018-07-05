@@ -2,11 +2,10 @@
 
 Add a CLI assistant tool to your node project, or quickly bootstrap a node-based CLI project
 
-`develop` branch:
-[![Build Status](https://travis-ci.org/rockholla/nodejs-clia.svg?branch=develop)](https://travis-ci.org/rockholla/nodejs-clia)
-
-`master` branch:
-[![Build Status](https://travis-ci.org/rockholla/nodejs-clia.svg?branch=master)](https://travis-ci.org/rockholla/nodejs-clia)
+| Branch    | Status                                                                                                                                               |
+| --------  | ---------------------------------------------------------------------------------------------------------------------------------------------------  |
+| `develop` | [![Build Status](https://travis-ci.org/rockholla/nodejs-clia.svg?branch=develop)](https://travis-ci.org/rockholla/nodejs-clia)                       |
+| `master`  | [![Build Status](https://travis-ci.org/rockholla/nodejs-clia.svg?branch=master)](https://travis-ci.org/rockholla/nodejs-clia)                        |
 
 ## Features and Included Tools
 
