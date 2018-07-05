@@ -37,7 +37,7 @@
     "test": "NODE_ENV=development jest -c jest.config.js",
     "test-manual": "rm -rf tests/.project; cp -r tests/.project-template tests/.project && cd tests/.project && npm install --production && ./node_modules/.bin/clia init",
     "lint": "eslint src/ tests/",
-    "release": "git-npm-release"
+    "release": "npm run build && git-npm-release"
   },
   "dependencies": {
     "config": "^1.30.0",
