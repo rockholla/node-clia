@@ -52,7 +52,7 @@
     "yargs": "^11.0.0"
   },
   "devDependencies": {
-    "@rockholla/git-npm-release": "^0.6.0",
+    "@rockholla/git-npm-release": "^0.7.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
