@@ -42,7 +42,7 @@ You can easily make use of the included `clia` tools while building your command
 ```
 import { config, logger } from '@rockholla/clia'
 
-logger.info(`Current log level configured as ${config.logger.level}`)
+logger.info(`Current log level configured as ${config.active.logger.level}`)
 ```
 
 ## Adding enforced requirements to your project
