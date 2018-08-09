@@ -54,6 +54,7 @@ class Requirements {
   }
 
   testSemver (name, version, expected, help = '') {
+    if (expected === null || expected === '') return
     if (!semver.satisfies(version, expected)) {
       throw `${name} should be version ${expected}, found ${version}\n${help}`
     }
