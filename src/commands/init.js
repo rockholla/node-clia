@@ -65,6 +65,9 @@ class CommandDefinition {
     if (!fs.existsSync(path.resolve(this.dir, 'config'))) {
       fs.mkdirSync(path.resolve(this.dir, 'config'))
     }
+    if (!fs.existsSync(path.resolve(this.dir, 'config', '.gitignore'))) {
+      fs.writeFileSync(path.resolve(this.dir, 'config', '.gitignore'), 'local.js')
+    }
     logger.info(`${this.logPad}adding default config at /config/default.js`)
     const writeDefaultConfig = () => {
       fs.writeFileSync(path.resolve(this.dir, 'config', 'default.js'), 'module.exports = {};')
