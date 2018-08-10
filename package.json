@@ -43,6 +43,7 @@
     "release": "npm run build && git-npm-release"
   },
   "dependencies": {
+    "command-exists": "^1.2.7",
     "config": "^1.30.0",
     "dotenv": "^6.0.0",
     "inquirer": "^6.0.0",
