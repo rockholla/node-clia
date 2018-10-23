@@ -78,4 +78,10 @@ describe('requirements/index', () => {
     }).toThrow()
   })
 
+  it('test regex scenarios', () => {
+    const versionOutput = `Terraform v0.11.10\n\nThere's a newer version of Terraform available`
+    const replace = '(Terraform\\sv|\\n.*)'
+    expect(versionOutput.replace(new RegExp(replace, 'g'), '').trim()).toEqual('0.11.10')
+  })
+
 })
