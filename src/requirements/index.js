@@ -58,7 +58,8 @@ class Requirements {
     if (result.code !== 0) {
       throw `${result.stderr}`
     } else {
-      return result.stdout.replace(new RegExp(replace, 'g'), '').trim()
+      result = result.stdout.replace(new RegExp(replace, 'g'), '').trim()
+      return result.replace(/\.0+([0-9]+)/g, '.$1') // replace leading zeros
     }
   }
 

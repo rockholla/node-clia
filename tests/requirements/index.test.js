@@ -84,4 +84,10 @@ describe('requirements/index', () => {
     expect(versionOutput.replace(new RegExp(replace, 'g'), '').trim()).toEqual('0.11.10')
   })
 
+  it('test version number massaging', () => {
+    expect('10.07.0'.replace(/(\.|^)0+([0-9]+)/g, '$1$2')).toEqual('10.7.0')
+    expect('08.7.0'.replace(/(\.|^)0+([0-9]+)/g, '$1$2')).toEqual('8.7.0')
+    expect('08.007.000001'.replace(/(\.|^)0+([0-9]+)/g, '$1$2')).toEqual('8.7.1')
+  })
+
 })
