@@ -40,7 +40,7 @@ class CommandDefinition {
         message: 'Would you like to create it?'
       }).then((response) => {
         if (response.create) {
-          fs.writeFileSync(path.resolve(__dirname, '..', 'config', `${argv.name}.js`), 'module.exports = {};')
+          fs.writeFileSync(path.resolve(__dirname, '..', 'config', `${argv.name}.js`), 'module.exports = {}')
           this.symlink(argv)
         }
       })
