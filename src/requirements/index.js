@@ -57,7 +57,7 @@ class Requirements {
     command     = (command && command != '') ? command : `${name} --version`
     replace     = (replace && replace != '') ? replace : this.defaultReplace
     if (!commandExists.sync(name)) {
-      throw `${name} does not exist${help ? help + '\n' : ''}`
+      throw `${name} does not exist\n${help ? help + '\n' : ''}`
     }
     let result  = shell.exec(command, { silent: true })
     if (result.code !== 0) {
