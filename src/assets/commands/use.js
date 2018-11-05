@@ -11,6 +11,9 @@ class CommandDefinition {
   }
 
   symlink (argv) {
+    if (fs.existsSync(path.join(__dirname, '..', 'config', 'local.js'))) {
+      fs.unlinkSync(path.join(__dirname, '..', 'config', 'local.js'))
+    }
     fs.symlinkSync(
       path.join(__dirname, '..', 'config', argv.name + '.js'),
       path.join(__dirname, '..', 'config', 'local.js')
