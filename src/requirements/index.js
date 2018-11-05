@@ -58,6 +58,7 @@ class Requirements {
     if (result.code !== 0) {
       throw `${result.stderr}`
     } else {
+      result = result.stdout.trim() !== '' ? result.stdout : result.stderr
       result = result.stdout.replace(new RegExp(replace, 'g'), '').trim()
       return result.replace(/(\.|^)0+([0-9]+)/g, '$1$2') // replace leading zeros
     }
@@ -66,7 +67,7 @@ class Requirements {
   testSemver (name, version, expected, help = '') {
     if (expected === null || expected === '') return
     if (!semver.satisfies(version, expected)) {
-      throw `${name} should be version ${expected}, found ${version}\n${help}`
+      throw `${name} should be version ${expected}, found ${version}\n${help}\n`
     }
   }
 }
