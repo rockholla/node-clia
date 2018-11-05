@@ -29,7 +29,12 @@ class Requirements {
     if (requirements.executables instanceof Array) {
       requirements.executables.forEach((requirement) => {
         try {
-          let executableVersion = this.getExecutableVersion(requirement.name, requirement.version.command, requirement.version.replace)
+          let executableVersion = this.getExecutableVersion(
+            requirement.name,
+            requirement.version.command,
+            requirement.version.replace,
+            requirement.help
+          )
           this.testSemver(
             requirement.name,
             executableVersion,
@@ -42,17 +47,17 @@ class Requirements {
       })
     }
     if (this.errors.length > 0) {
-      throw this.errors.join('')
+      throw this.errors.join('\n')
     } else {
       return true
     }
   }
 
-  getExecutableVersion (name, command, replace) {
+  getExecutableVersion (name, command, replace, help = '') {
     command     = (command && command != '') ? command : `${name} --version`
     replace     = (replace && replace != '') ? replace : this.defaultReplace
     if (!commandExists.sync(name)) {
-      throw `${name} does not exist`
+      throw `${name} does not exist${help ? help + '\n' : ''}`
     }
     let result  = shell.exec(command, { silent: true })
     if (result.code !== 0) {
@@ -67,7 +72,7 @@ class Requirements {
   testSemver (name, version, expected, help = '') {
     if (expected === null || expected === '') return
     if (!semver.satisfies(version, expected)) {
-      throw `${name} should be version ${expected}, found ${version}\n${help}\n`
+      throw `${name} should be version ${expected}, found ${version}\n${help ? help + '\n' : ''}`
     }
   }
 }
